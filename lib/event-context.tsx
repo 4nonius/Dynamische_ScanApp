@@ -11,7 +11,6 @@ type EventContextValue = {
 };
 
 const EventContext= createContext<EventContextValue | null>(null);
-const [event, setEvent] = useState<Event[]>([]);
 
 
 export function EventProvider({ children } : {children: ReactNode}) {
@@ -19,7 +18,7 @@ export function EventProvider({ children } : {children: ReactNode}) {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
     //opladen info
-useEffect(() => {
+    useEffect(() => {
     const raw = localStorage.getItem("events");
     if (raw){
         try{
@@ -32,22 +31,22 @@ useEffect(() => {
     }, []);
 
 // opslaan info
-useEffect(() => {
+    useEffect(() => {
     if(!isLoaded) return;
     localStorage.setItem('events', JSON.stringify(events));
 }, [events, isLoaded]);
 
 //toevoegen event
-const addEvent = (name: string) => {
-    const newEvent: Event = {id: crypto.randomUUID(), name};
-    setEvents([...events, newEvent]);
-};
+    const addEvent = (name: string) => {
+        const newEvent: Event = {id: crypto.randomUUID(), name};
+        setEvents([...events, newEvent]);
+    };
 
 
 //verwijderen event
-const deleteEvent = (id: string) => {
-    setEvents(events.filter(event => event.id !== id));
-};
+    const deleteEvent = (id: string) => {
+        setEvents(events.filter(event => event.id !== id));
+    };
 
 return (
     <EventContext.Provider value={{events, addEvent, deleteEvent}}>
@@ -60,5 +59,5 @@ export function useEvents(){
     const ctx = useContext(EventContext);
     if (!ctx) throw new Error("useEvents must be used inside <EventProvider>");
     return ctx;
-}
 
+}
