@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Button} from "@/components/ui/button";
+import {buttonVariants} from "@/components/ui/button";
+import {cn} from "@/lib/utils";
 
 
 
@@ -12,11 +13,10 @@ import { Button} from "@/components/ui/button";
            Everything for the event on the same day: Scanners, notes and checklist in one place!
           </p>
 
-          <Button
-              size="lg"
-              className="bg-white px-8 text-indigo-700 hover:bg-indigo-50"
-              render={<Link href="/events">Start</Link>}
-          />
+            <Link
+                href="/events"
+                className={cn(buttonVariants({ size: "lg" }), "h-11 bg-white px-8 text-base text-indigo-700 hover:bg-indigo-50")}
+            >Start</Link>
         </div>
     );
   }
