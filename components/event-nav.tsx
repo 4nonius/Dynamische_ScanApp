@@ -18,7 +18,7 @@ export function EventNav() {
         { href: `/events/${id}/scanners`, label: "Scanners" },
         { href: `/events/${id}/checklist`, label: "Checklist" },
         { href: `/events/${id}/notes`, label: "Notes" },
-        { href: `/events/${id}/import`, label: "Imports" }
+        { href: `/events/${id}/details`, label: "Details" }
     ];
 
     if (!id) return null;
