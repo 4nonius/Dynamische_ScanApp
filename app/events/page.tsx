@@ -21,7 +21,7 @@ export default function EventsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-white">
+        <div className="min-h-screen bg-linear-to-b from-indigo-50 via-white to-white">
             <div className="mx-auto w-full max-w-3xl px-6 py-16">
                 <header className="mb-10">
                     <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">
@@ -41,6 +41,7 @@ export default function EventsPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Name of the event"
+                        maxLength={50}
                         className="h-10 border-0 shadow-none focus-visible:ring-0"
                     />
                     <Button type="submit" size="lg" className="h-10 shrink-0 gap-1.5">
@@ -76,11 +77,9 @@ export default function EventsPage() {
                                         {event.name.charAt(0).toUpperCase()}
                                     </div>
 
-                                    <Link href={`/events/${event.id}`} className="flex-1">
-                                        <span className="block font-semibold">{event.name}</span>
-                                        <span className="block text-sm text-muted-foreground">
-                      Open dashboard
-                    </span>
+                                    <Link href={`/events/${event.id}`} className="min-w-0 flex-1">
+                                        <span className="block font-semibold" title={event.name}>{event.name}</span>
+                                        <span className="block text-sm text-muted-foreground">Open dashboard</span>
                                     </Link>
 
                                     <Button

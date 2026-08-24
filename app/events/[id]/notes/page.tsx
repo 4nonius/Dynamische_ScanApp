@@ -1,3 +1,7 @@
 export default function NotesPage() {
-    return <div className="p-8">Nottes</div>;
+    return (
+        <main className="mx-auto w-full max-w-5xl px-6 py-16">
+            <h1 className="text-4xl font-bold tracking-tight">Notes Page</h1>
+        </main>
+    );
 }
