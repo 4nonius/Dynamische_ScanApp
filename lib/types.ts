@@ -5,7 +5,6 @@ export type NoteSeverity = 'info' | 'critical' | 'issue';
 export type Event = {
     id: string;
     name: string;
-    isLoaded : boolean;
     date?: string;
     location?: string;
     expectedVisitors?: number;
