@@ -15,7 +15,7 @@ import {cn} from "@/lib/utils";
 
             <Link
                 href="/events"
-                className={cn(buttonVariants({ size: "lg" }), "h-11 bg-white b px-8 text-base text-indigo-700 hover:bg-indigo-50")}
+                className={cn(buttonVariants({ size: "lg" }), "h-11 bg-white px-8 text-base text-indigo-700 hover:bg-indigo-50")}
             >Events</Link>
         </div>
     );

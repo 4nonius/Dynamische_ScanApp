@@ -57,7 +57,6 @@ function EventDetailsForm({ event }: EventDetailsFormProps) {
         date: event.date ?? "",
         location: event.location ?? "",
         expectedVisitors: event.expectedVisitors?.toString() ?? "",
-        scannersNeeded: event.scannersNeeded?.toString() ?? "",
         contactName: event.contactName ?? "",
         contactPhone: event.contactPhone ?? "",
     });
@@ -78,9 +77,6 @@ function EventDetailsForm({ event }: EventDetailsFormProps) {
             expectedVisitors: form.expectedVisitors
                 ? Number(form.expectedVisitors)
                 : undefined,
-            scannersNeeded: form.scannersNeeded
-                ? Number(form.scannersNeeded)
-                : undefined,
             contactName: form.contactName.trim() || undefined,
             contactPhone: form.contactPhone.trim() || undefined,
         });
@@ -100,12 +96,6 @@ function EventDetailsForm({ event }: EventDetailsFormProps) {
             label: "Expected visitors",
             type: "number",
             placeholder: "4000",
-        },
-        {
-            name: "scannersNeeded",
-            label: "Scanners needed",
-            type: "number",
-            placeholder: "6",
         },
         {
             name: "contactName",

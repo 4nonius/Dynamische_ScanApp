@@ -42,14 +42,20 @@ export default function EventOverviewPage() {
     // Every field except name is optional in the Event type, so each one
     // falls back to a dash instead of printing "undefined".
     const details = [
-        { icon: CalendarDays, label: "Date", value: event.date },
-        { icon: MapPin, label: "Location", value: event.location },
+        { icon: CalendarDays, label: "Date", value: event.date, sub: undefined },
+        { icon: MapPin, label: "Location", value: event.location, sub: undefined },
         {
             icon: Users,
             label: "Expected visitors",
             value: event.expectedVisitors?.toString(),
+            sub: undefined,
         },
-        { icon: Phone, label: "Contact", value: event.contactName },
+        {
+            icon: Phone,
+            label: "Contact",
+            value: event.contactName,
+            sub: event.contactPhone, // second line under the name
+        },
     ];
 
     return (
@@ -69,12 +75,17 @@ export default function EventOverviewPage() {
                 {details.map((detail) => (
                     <div
                         key={detail.label}
-                        className="flex items-center gap-3 rounded-xl border bg-white p-4 shadow-sm"
+                        className="flex items-start gap-3 rounded-xl border bg-white p-4 shadow-sm"
                     >
-                        <detail.icon className="size-5 shrink-0 text-indigo-600" />
+                        <detail.icon className="mt-0.5 size-5 shrink-0 text-indigo-600" />
                         <div className="min-w-0">
                             <p className="text-xs text-muted-foreground">{detail.label}</p>
                             <p className="truncate font-medium">{detail.value || "—"}</p>
+                            {detail.sub && (
+                                <p className="truncate text-sm text-muted-foreground">
+                                    {detail.sub}
+                                </p>
+                            )}
                         </div>
                     </div>
                 ))}

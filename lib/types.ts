@@ -10,7 +10,6 @@ export type Event = {
     expectedVisitors?: number;
     contactName?: string;
     contactPhone?: string;
-    scannersNeeded?: number;
 };
 
 //informatie over mijn scanners

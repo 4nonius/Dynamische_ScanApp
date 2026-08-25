@@ -6,9 +6,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 
-
-
-
 export function EventNav() {
     const {id} = useParams<{ id: string }>();
     const pathname = usePathname();
@@ -26,10 +23,16 @@ export function EventNav() {
     const eventName = !isLoaded ? "": event? event.name : "Unknown event";
 
     return (
-        <header className="p-5 border-gray-100 sticky top-0 z-10 border-b bg-white/80 backdrop-blur">
+        <header className="p-5 border-gray-100 sticky top-0 z-10 bg-white/80 backdrop-blur">
             <nav className="flex gap-4 border-b border-gray-200 bg-gray-50 px-4 py-2">
-                <Link href="/events" className="shrink-0 text-sm text-muted-foreground hover:text-foreground">
-                    <span className="max-w-48 truncate font-semibold" title={eventName}>{eventName}</span>
+                {/* max-w + truncate must sit on the flex item itself: a flex
+                    child is blockified, an inline <span> inside it is not. */}
+                <Link
+                    href="/events"
+                    title={eventName}
+                    className="max-w-48 shrink-0 truncate text-sm font-semibold text-muted-foreground hover:text-foreground"
+                >
+                    {eventName}
                 </Link>
 
                 {links.map((link) => (
